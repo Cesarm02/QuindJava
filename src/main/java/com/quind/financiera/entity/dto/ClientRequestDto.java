@@ -14,11 +14,13 @@ import java.time.LocalDate;
 public class ClientRequestDto {
 
     private String idType;
-    private Integer idNumber;
+    private String idNumber;
     private String name;
     private String lastname;
     private String email;
     private LocalDate fechaNacimiento;
+
+    private Integer id;
 
 
 

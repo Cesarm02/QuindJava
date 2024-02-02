@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,11 +15,11 @@ import java.time.LocalDate;
 public class ClientResponseDto {
 
     private String idType;
-    private Integer idNumber;
+    private String idNumber;
     private String name;
     private String lastname;
     private String email;
     private LocalDate fechaNacimiento;
-    private LocalDate fechaModificacion;
+    private LocalDateTime fechaModificacion;
 
 }

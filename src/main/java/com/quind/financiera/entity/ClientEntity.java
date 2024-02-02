@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -21,18 +22,19 @@ public class ClientEntity {
     private int id;
 
     private String identificationType;
-    private Integer identificationNumber;
+    @Column(unique = true)
+    private String identificationNumber;
     private String name;
     private String lastname;
     private String email;
     private LocalDate fechaNacimiento;
     private LocalDate fechaCreacion = LocalDate.now();
-    private LocalDate fechaModificacion;
+    private LocalDateTime fechaModificacion;
 
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
-            orphanRemoval = true,
+           // orphanRemoval = true,
             mappedBy = "client"
     )
     private List<AccountEntity> accounts;

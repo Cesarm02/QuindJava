@@ -7,5 +7,6 @@ public interface ClientService {
 
     ClientResponseDto saveClient(ClientRequestDto clientRequestDto);
 
+    ClientResponseDto updateClient(ClientRequestDto clientRequestDto);
 
 }
