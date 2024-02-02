@@ -5,6 +5,7 @@ import com.quind.financiera.entity.dto.ClientRequestDto;
 import com.quind.financiera.entity.dto.ClientResponseDto;
 import com.quind.financiera.repository.ClientRepository;
 import com.quind.financiera.service.ClientService;
+import com.quind.financiera.util.Constants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,17 @@ public class ClientServiceImpl implements ClientService {
         log.info("---- Cliente actualizado --- ");
         ClientResponseDto clientResponseDto = entityToResponse(client);
         return clientResponseDto;
+    }
+
+    @Override
+    public String deleteClient(String cedula) {
+        ClientEntity client = clientRepository.findByIdentificationNumber(cedula);
+        if(client == null){
+            log.info("El cliente no existe");
+            return null;
+        }
+        clientRepository.delete(client);
+        return Constants.DELETED;
     }
 
 

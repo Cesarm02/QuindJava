@@ -26,4 +26,9 @@ public class ClientController {
         return ResponseEntity.ok(responseDto);
     }
 
+    @DeleteMapping(path = "delete")
+    ResponseEntity<String> deleteClient(@RequestParam String cedula){
+        return ResponseEntity.ok(clientService.deleteClient(cedula));
+    }
+
 }

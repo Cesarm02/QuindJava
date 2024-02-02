@@ -9,4 +9,6 @@ public interface ClientService {
 
     ClientResponseDto updateClient(ClientRequestDto clientRequestDto);
 
+    String deleteClient(String cedula);
+
 }
