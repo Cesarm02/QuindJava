@@ -21,7 +21,7 @@ public class ClientEntity {
     private int id;
 
     private String identificationType;
-    private String identificationNumber;
+    private Integer identificationNumber;
     private String name;
     private String lastname;
     private String email;
