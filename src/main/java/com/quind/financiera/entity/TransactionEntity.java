@@ -21,10 +21,8 @@ public class TransactionEntity {
     private TransactionType transactionType;
     private double value;
 
-    @ManyToOne
-    private AccountEntity accountReceive;
-    @ManyToOne
-    private AccountEntity accountSend;
+    private String accountReceive;
+    private String accountSend;
 
 
 }
