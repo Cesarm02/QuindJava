@@ -16,7 +16,5 @@ public class TransactionRequestDto {
     private double value;
     private String numberAccount;
     private String send;
-    private String receive;
-
 
 }

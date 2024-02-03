@@ -15,5 +15,6 @@ public class TransactionResponseDto {
     private String status;
     private Double value;
     private String receive;
+    private String send;
 
 }
