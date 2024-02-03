@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -22,12 +23,13 @@ public class AccountEntity {
     private int id;
 
     private AccountType accountType;
+    @Column(unique = true)
     private String numberAccount;
     private Status status;
     private Double balance;
-    private boolean GMF;
+    private Boolean GMF;
     private LocalDate fechaCreacion = LocalDate.now();
-    private LocalDate fechaModificacion;
+    private LocalDateTime fechaModificacion;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id")

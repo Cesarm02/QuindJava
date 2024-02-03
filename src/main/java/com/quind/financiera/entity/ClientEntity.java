@@ -1,10 +1,7 @@
 package com.quind.financiera.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -31,6 +28,8 @@ public class ClientEntity {
     private LocalDate fechaCreacion = LocalDate.now();
     private LocalDateTime fechaModificacion;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @OneToMany(
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,

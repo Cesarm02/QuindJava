@@ -9,10 +9,12 @@ import com.quind.financiera.util.Constants;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 
 @Service
 @AllArgsConstructor
@@ -24,6 +26,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientResponseDto saveClient(ClientRequestDto clientRequestDto) {
+        if(!validarEdad(clientRequestDto.getFechaNacimiento())){
+            log.info("Cliente menor de edad");
+            return null;
+        }
         ClientEntity client = clientRepository.findByIdentificationNumber(clientRequestDto.getIdNumber());
         if(client != null){
             log.info("Cliente ya existe");
@@ -40,7 +46,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientResponseDto updateClient(ClientRequestDto clientRequestDto) {
-
+        if(!validarEdad(clientRequestDto.getFechaNacimiento())){
+            log.info("Cliente menor de edad");
+            return null;
+        }
         ClientEntity client = clientRepository.findByIdentificationNumber(clientRequestDto.getIdNumber());
         if(client == null){
             log.info("Cliente no existe");
@@ -61,6 +70,10 @@ public class ClientServiceImpl implements ClientService {
         ClientEntity client = clientRepository.findByIdentificationNumber(cedula);
         if(client == null){
             log.info("El cliente no existe");
+            return null;
+        }
+        if(client.getAccounts().size() >=1 ){
+            log.info("El cliente tiene productos vinculados");
             return null;
         }
         clientRepository.delete(client);
@@ -97,6 +110,11 @@ public class ClientServiceImpl implements ClientService {
                 .fechaModificacion(clientEntity.getFechaModificacion())
                 .build();
         return response;
+    }
+
+    boolean validarEdad(LocalDate fechaNacimiento){
+        int edad = Period.between(fechaNacimiento, LocalDate.now()).getYears();
+        return edad >= 18 ? true : false;
     }
 
 }
