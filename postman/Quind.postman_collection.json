@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "e5b17c59-7d0c-4039-a41c-9c0007167a13",
+		"name": "Quind",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17298742"
+	},
+	"item": [
+		{
+			"name": "Client",
+			"item": [
+				{
+					"name": "Save Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idType\" : \"CC\",\r\n    \"idNumber\" : \"10706268083\",\r\n    \"name\" : \"Cesar\",\r\n    \"lastname\" : \"Mesa\",\r\n    \"email\" : \"aaa@aaa.com\",\r\n    \"fechaNacimiento\" : \"2005-06-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/quind/client/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"client",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idType\" : \"TI\",\r\n    \"idNumber\" : \"99060208065\",\r\n    \"name\" : \"Estiven\",\r\n    \"lastname\" : \"Medrano\",\r\n    \"email\" : \"bbb@bbb.com\",\r\n    \"fechaNacimiento\" : \"1999-06-02\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/quind/client/update",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"client",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client Copy",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/quind/client/delete?cedula=123",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"client",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "cedula",
+									"value": "123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Save Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"accountType\": \"AHORROS\",\r\n    \"balance\" : 100,\r\n    \"gmf\" : true,\r\n    \"cedula\" : \"10706268082\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/quind/account/save",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"account",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/quind/account/status?status=CANCELADA&numberAccount=5356325476",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"account",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "CANCELADA"
+								},
+								{
+									"key": "numberAccount",
+									"value": "5356325476"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Consignacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactionType\" : \"CONSIGNACION\",\r\n    \"value\" : 200,\r\n    \"numberAccount\" : \"5367776417\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/quind/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retiro",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactionType\" : \"RETIRO\",\r\n    \"value\" : 200,\r\n    \"numberAccount\" : \"5367776417\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/quind/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transferencia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"transactionType\" : \"TRANSFERENCIA\",\r\n    \"value\" : 500,\r\n    \"numberAccount\" : \"5369860632\",\r\n    \"send\": \"5345929931\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/quind/transaction",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"quind",
+								"transaction"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
