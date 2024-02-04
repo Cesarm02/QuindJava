@@ -72,13 +72,47 @@ public class AccounServiceTest {
                 .balance(200.00)
                 .fechaCreacion(LocalDate.now())
                 .status(Status.ACTIVA)
+                .fechaModificacion(LocalDateTime.now())
+                .client(client)
                 .build();
 
         Mockito.when(clientRepository.findByIdentificationNumber(accountRequestDto.getCedula()))
                 .thenReturn(client);
 
+        Mockito.when(accountRepository.save(Mockito.any()))
+                .thenReturn(accountEntity);
+
         Assertions.assertNotNull(accountService.saveAccount(accountRequestDto));
     }
 
+    @Test
+    void changeStatusTest(){
+        ClientEntity client = ClientEntity.builder()
+                .id(123)
+                .name("name")
+                .email("email")
+                .identificationNumber("123")
+                .identificationType("idType")
+                .fechaCreacion(LocalDate.now())
+                .build();
+
+        AccountEntity accountEntity = AccountEntity
+                .builder()
+                .accountType(AccountType.AHORROS)
+                .numberAccount("123")
+                .GMF(true)
+                .balance(0.0)
+                .fechaCreacion(LocalDate.now())
+                .status(Status.CANCELADA)
+                .fechaModificacion(LocalDateTime.now())
+                .client(client)
+                .build();
+
+        Mockito.when(accountRepository.findByNumberAccount(Mockito.anyString()))
+                .thenReturn(accountEntity);
+
+        Assertions.assertNull(accountService.changeStatus(Status.ACTIVA, accountEntity.getNumberAccount()));
+
+    }
 
 }
